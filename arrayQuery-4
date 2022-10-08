@@ -1,0 +1,31 @@
+
+const Inventory = require("../models/Inventory");
+const list = async (request, response) => {
+  const data = await Inventory.find({
+    instock: { warehouse: "A", qty: 5 },
+  });
+  console.log(data.length);
+  response.json({ data });
+};
+module.exports = { list };
+
+// finds the exact value where both are equal { warehouse: "A", qty: 5 },
+
+
+=================================
+
+
+
+
+const Inventory = require("../models/Inventory");
+const list = async (request, response) => {
+  const data = await Inventory.find({
+    "instock.warehouse": "C",
+  });
+  console.log(data.length);
+  response.json({ data });
+};
+module.exports = { list };
+
+
+// finds all the  values where warehouse is "C" 
